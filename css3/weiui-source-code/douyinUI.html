@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实时视频播放器</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: auto;
+    }
+    
+    .live-play {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-color: #f5f5f5;
+      min-height: 100%;
+      overflow-y: auto;/*page 一屏高度，用滚动条*/
+      -webkit-overflow-scrolling: touch;/*滚动如丝般顺滑*/
+    }
+
+    .live-play__title {
+      font-size: 24px;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    /* Block */
+    .live-play {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    /* Element: 视频播放器 */
+    .live-play__player {
+      width: 100%;
+      height: 50vw;
+      max-height: 70vh;
+      background-color: #000;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* Element: 控制按钮 */
+    .live-play__controls {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    /* Modifier: 控制按钮样式 */
+    .dyui-btn {
+      width: 100%;
+      padding: 12px 24px;
+      font-weight: 500;
+      font-size: 17px;
+      text-decoration: none;
+      color: #fff;
+      line-height: 1.4118;
+      border-radius: 8px;
+      -webkit-user-select: none;
+      user-select: none;
+      margin-bottom: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dyui-btn__play {
+      background-color: #07c160;
+    }
+
+    .dyui-btn__stop {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .dyui-btn__mute {
+      background-color: #fa5151;
+    }
+
+    .dyui-btn__object-fit {
+      background-color: #999;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="live-play">
+        <div class="live-play__hd">
+          <div class="live-play__title">实时视频播放器</div>
+        </div>
+      <div class="live-play__bd">
+        <div class="live-play">
+          <video class="live-play__player" id="myLive" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="live-play__controls">
+            <button class="dyui-btn dyui-btn__play" @click="livePlay">开始播放 play</button>
+            <button class="dyui-btn dyui-btn__stop" @click="liveStop">停止播放 stop</button>
+            <button class="dyui-btn dyui-btn__mute" @click="liveMute">{{ muted ? '取消静音' : '静音' }}</button>
+            <button class="dyui-btn dyui-btn__object-fit" @click="toggleFullScreen">{{ isFullScreen ? '退出全屏' : '全屏' }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        autoplay: true,
+        objectFit: 'contain',
+        muted: false,
+        player: null,
+        isFullScreen: false,
+        originalWidth: 'auto',
+        originalHeight: 'auto'
+      },
+      methods: {
+        livePlay() {
+          console.log('开始调用播放：', this.player);
+          if (this.player) {
+            this.player.play();
+          }
+        },
+        liveStop() {
+          if (this.player) {
+            this.player.pause();
+          }
+        },
+        liveMute() {
+          this.muted = !this.muted;
+          if (this.player) {
+            this.player.muted = this.muted;
+          }
+        },
+        toggleFullScreen() {
+          this.isFullScreen = !this.isFullScreen;
+          if (this.isFullScreen) {
+            this.originalWidth = this.player.offsetWidth;
+            this.originalHeight = this.player.offsetHeight;
+            this.player.style.width = '100%';
+            this.player.style.height = '100%';
+          } else {
+            this.player.style.width = this.originalWidth + 'px';
+            this.player.style.height = this.originalHeight + 'px';
+          }
+        },
+      },
+      mounted() {
+        this.player = document.getElementById('myLive');
+      }
+    });
+  </script>
+</body>
+</html>
