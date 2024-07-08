@@ -1,17 +1,28 @@
-import React from 'react';
+// 入口文件
+// console.log('hello');
+//  es6 module  dom 相关
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react';
+// root 内部就是react的世界了
+// root react 的根节点
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const root = ReactDOM.createRoot(
+  //获取挂载点，以后react 就不再做DOM操作 (DOM操作很耗性能)
+  document.getElementById('root')
+)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//  react 法宝 JSX语法
+// 不是纯js，react jsx语法 js里表达的html的
+
+// root.render(<h1>开始</h1> )
+// 节点
+const element =  React.createElement('h1',null,'起始')
+root.render(element)
+//也可以这样写
+const element1 = (<h1>开始</h1>)
+root.render(element1)
+console.log(element1);
+
+const element2 = React.createElement('div',{id:'name'},'名字')
+console.log(element2);
+root.render(element2);

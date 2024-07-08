@@ -9,7 +9,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    /* animation: App-logo-spin infinite 20s linear; */
   }
 }
 
@@ -35,4 +35,17 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* 媒体(终端)查询  适配的高级技巧*/
+ /* 加限定条件后，符合条件打开的设备可以显示改变的css样式 */
+@media  screen and (max-width: 1024px) { 
+    .App-header{
+      background-color: green;
+    }
+
+    .App-link {
+      color: red;
+    }
+
 }

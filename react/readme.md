@@ -38,10 +38,22 @@
 - create-react-app 做了什么事
     - git clone 模板项目
     - npm i 依赖 react react-dom
-    - npm run strat
+    - npm run strat 启动项目
     - web server  3000 在3000端口
     - public/index.html 首页
     - src/所有react开发代码会打包成 /public/js/bundle.js 动态的加载到index.html
     - react 功能 接管 root 开启react 世界
 
 - defer 异步加载 
+        推迟到 DOMContentLoaded 之后 
+        async 异步加载   浏览器会异步加载
+
+- jsx语法
+    - js里表达的html的
+    - 渲染标签
+        const element =  React.createElement('h1',null,'起始')
+        root.render(element)
+         也可以 const element1 = (<h1>开始</h1>)
+        root.render(element1)
+        const element2 = React.createElement('div',{id:'name'},'名字')
+        root.render(element2);
