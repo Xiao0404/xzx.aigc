@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name:'xyao',
+            getName: function(...args){
+                console.log(args);
+                console.log(this.name);
+            }
+        }
+        let obj2 = {
+            name:'04'
+        }
+        obj.getName();
+        obj.getName.call(obj2,1,2)   // 参数一个一个传的
+        obj.getName.apply(obj2,[1,2])   // 参数以数组形式传
+        
+        let func = obj.getName
+        // 未来执行用bind，call和apply是立即执行
+        func.bind(obj2)() 
+    </script>
+</body>
+</html>
