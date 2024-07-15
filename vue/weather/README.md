@@ -1,1 +1,2 @@
 - 快捷搭建v3b
+- npm run dev 启动vue项目
