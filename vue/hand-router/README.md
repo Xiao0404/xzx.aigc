@@ -28,3 +28,15 @@
     - 插槽
     - 将组件的内部交给外部去自定义    自定义的组件里加一个<slot />标签可以让这个标签的文本由外部的内容替换
     - 提升了组件的可复用性
+
+- http://localhost:5173/posts/:id#/about
+    - 协议 http://
+    - 域名 localhost
+    - 端口号 port 5173
+    - hash #/about
+    - path 路径  
+    - params :id
+    - query ?a=1&b=2
+- 高级的响应式
+    - ref/reactive
+    - 在模板，在组件，在任何地方 都会更新

@@ -1,7 +1,7 @@
 <script setup>
   import {ref} from 'vue';
   // import {} from '';
-  const name = '旅梦开发团';
+  const name = 'VUE动画';
   const isActive = ref(true);
    
 </script>
@@ -15,9 +15,11 @@
         </div>
         <div class="card__content">
           <!-- <div :class="['emoji',{pulse: !isActive}]">🌲</div> -->
+         
           <!-- <transition name="pulse" >
               <div v-if="isActive" class="emoji">🥹</div>
           </transition> -->
+          
           <transition class="animate__tada"
             enter-active-class="animate__animated animate__tada"
             leave-active-class="animate__animated animate__bounce"
