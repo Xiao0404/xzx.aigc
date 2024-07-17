@@ -1,6 +1,7 @@
 import {createRouter,createWebHistory} from 'vue-router'
 import Home from '../views/Home.vue'
-
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 
 const routes =[
@@ -53,6 +54,7 @@ const routes =[
             title:'登录',
             // 路由守卫中直接放行
             noAuth:true
+            
         },
         component:()=>import('../views/login.vue')
 
@@ -76,8 +78,11 @@ const routes =[
         component:()=>import('../views/404.vue')
     },
     {
+        path:'/:path(.*)',
+        redirect:'/404'
 
     }
+    
 ]
 // 用history url 传统url 跟后端一样
 // 自己人用的，兼容性差一点
@@ -89,9 +94,11 @@ const router = createRouter({
 
 // 路由守卫
 router.beforeEach((to,from,next) => {
+        NProgress.start();
+
     // 标题跟随改变
     document.title = to.meta.title
-const role = localStorage.getItem('ms_name') || 'admin'
+const role = localStorage.getItem('ms_name') 
 const permiss = {
     'admin':['1','11','12'],
     'user':['11']
@@ -101,14 +108,22 @@ const permiss = {
     // 没登入直接被拦下
     if(!role && !to.meta.noAuth){
         next('/login')
-    } else if(!permiss[role].includes(to.meta.permiss)){
+    } else if( typeof to.meta.permiss == 'string' && (!permiss[role] || !permiss[role].includes(to.meta.permiss))){
         next('/403')
     }else{
         // 直接放行
-        next()
+        next()  // 不需要登录，或者登录了有相应权限进入的
     }
     console.log(role,permiss[role]);
 }
 )
+
+
+router.afterEach(() => {
+    NProgress.done();
+})
+
+
+
 
 export default router

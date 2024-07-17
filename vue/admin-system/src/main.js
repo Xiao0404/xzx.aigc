@@ -3,7 +3,10 @@ import { createApp } from 'vue'
 import { 
     ElButton, 
     ElForm,
-    ElFormItem
+    ElFormItem,
+    ElInput,
+    ElCheckbox,
+    ElLink
 } from 'element-plus'
 // 组件库依赖的样式
 import 'element-plus/dist/index.css'
@@ -16,4 +19,7 @@ import router from './router'
     .use(ElButton)   
     .use(ElForm)
     .use(ElFormItem)
+    .use(ElInput)
+    .use(ElCheckbox)
+    .use(ElLink)
     .mount('#app')
