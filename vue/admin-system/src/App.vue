@@ -1,5 +1,9 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import {useSidebarStore} from './store/sidebar'
+// use开头 hooks 
+const sidebarStore = useSidebarStore();
+// sidebarStore.handleCollapse();
+// console.log(sidebarStore);
 </script>
 
 <template>

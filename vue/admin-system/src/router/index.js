@@ -2,6 +2,7 @@ import {createRouter,createWebHistory} from 'vue-router'
 import Home from '../views/Home.vue'
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import { usePermissStore } from '../store/permiss';
 
 
 const routes =[
@@ -98,17 +99,17 @@ router.beforeEach((to,from,next) => {
 
     // 标题跟随改变
     document.title = to.meta.title
-const role = localStorage.getItem('ms_name') 
-const permiss = {
-    'admin':['1','11','12'],
-    'user':['11']
-}
+
+
+        const role = localStorage.getItem('ms_name')
+        const permissStore = usePermissStore();
+
 
 
     // 没登入直接被拦下
     if(!role && !to.meta.noAuth){
         next('/login')
-    } else if( typeof to.meta.permiss == 'string' && (!permiss[role] || !permiss[role].includes(to.meta.permiss))){
+    } else if( typeof to.meta.permiss == 'string' &&  !permissStore.key.includes(to.meta.permiss)){
         next('/403')
     }else{
         // 直接放行

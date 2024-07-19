@@ -50,8 +50,11 @@
     import { ElMessage } from 'element-plus';
     import  { reactive,ref }  from 'vue';
     import { useRouter } from 'vue-router';
+    import { usePermissStore } from '../store/permiss';
 
     const router = useRouter();  
+
+    const permissStore = usePermissStore();
 
 
     const login = ref(null)  // 绑定form 元素
@@ -92,6 +95,8 @@
             if(valid){
                 ElMessage.success('登入成功')
                 localStorage.setItem('ms_name',param.username)
+                const keys = permissStore.defaultList[param.username];
+                permissStore.handleSet(Keys);
                 router.push('/');
                 // console.log('表单验证成功')
             }else{
