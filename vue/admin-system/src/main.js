@@ -8,7 +8,14 @@ import {
     ElInput,
     ElCheckbox,
     ElLink,
-    ElIcon
+    ElIcon,
+    ElAvatar,
+    ElDropdown,
+    ElDropdownMenu,
+    ElDropdownItem,
+    ElMenu,
+    ElMenuItem,
+    ElSubMenu
 } from 'element-plus'
 // 组件库依赖的样式
 import 'element-plus/dist/index.css'
@@ -16,6 +23,7 @@ import App from './App.vue'
 import router from './router'
 // * as 引入全部组件库
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import './assets/styles/variable.css'
 
 console.log(ElementPlusIconsVue,'///');
 
@@ -38,4 +46,26 @@ console.log(ElementPlusIconsVue,'///');
     .use(ElCheckbox)
     .use(ElLink)
     .use(ElIcon)
-    .mount('#app')
+    .use(ElAvatar)
+    .use(ElDropdown)
+    .use(ElDropdownMenu)
+    .use(ElDropdownItem)
+    .use(ElMenu)
+    .use(ElMenuItem)
+    .use(ElSubMenu)
+    
+   // 自定义指令
+   import { usePermissStore } from './store/permiss'
+   const permissStore = usePermissStore();
+   app.directive('permiss',{
+      // v-if  v-show  el 承载指令的节点  binding  绑定的属性，就是传递的值
+      mounted(el,binding){
+            if(binding.value && !permissStore.key.includes(String(binding.value))){
+               el['hidden'] = true
+            }
+      }
+   })
+
+
+    app
+       .mount('#app')

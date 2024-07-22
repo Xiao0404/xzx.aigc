@@ -1,0 +1,5 @@
+/* 伪类，放在根元素上 */
+:root {
+    --header-bg-color: #242f42;
+    --header-text-color:#fff
+}

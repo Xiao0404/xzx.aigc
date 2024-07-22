@@ -96,7 +96,7 @@
                 ElMessage.success('登入成功')
                 localStorage.setItem('ms_name',param.username)
                 const keys = permissStore.defaultList[param.username];
-                permissStore.handleSet(Keys);
+                permissStore.handleSet(keys);
                 router.push('/');
                 // console.log('表单验证成功')
             }else{

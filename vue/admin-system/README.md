@@ -92,10 +92,30 @@
 
 - 全局状态设计
     - collapse 状态  true | false  服务于左侧菜单是否要收起来
-    - 考虑应用场景   -> 窄屏的pad 
+        - 考虑应用场景   -> 窄屏的pad 
+        - v-if / v-else + action collapse  完成状态的切换
     - 组件 数据管理
     - permiss 权限状态
         - 跨组件层级访问
         - key,defaultList 可用于计算  login.vue 通过 ms_name  this.handleSet 去设置 key
         - router.js 403
         - 任何需要检验权限的地方
+
+- css 特性
+    - transition 
+    - css4 variable 主题的切换  方便在不同的主题下修改样式
+        :root { -- }
+        var()
+
+- ElDropDown
+    - 触发 DropDown 的内容 交给 slot 
+    - DropDownMenu 内容？ 交给具名slot
+    - slot 带来了组件的超级定制性
+    - ElDialog   slot  header default footer  三部分，无限复用 
+    - template  vue 内置组件 包一下内部的内容，挂载到页面上就消失了
+        <template #header>
+
+- template 的用法
+    - template 是 vue  组件的模板声明
+    - template  #title  具名slot   插入到相应位置
+    - template  接受指令 v-if v-show
