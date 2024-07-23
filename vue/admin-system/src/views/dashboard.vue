@@ -1,13 +1,13 @@
-<template>
-    <div>
-        dashboard
-    </div>
-</template>
+    <template>
+        <div>
+            dashboard
+        </div>
+    </template>
 
-<script setup>
+    <script setup>
 
-</script>
+    </script>
 
-<style lang="scss" scoped>
+    <style lang="scss" scoped>
 
-</style>
+    </style>
