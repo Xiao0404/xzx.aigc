@@ -13,11 +13,11 @@
     <div v-if="parent === 'item'">
       <div class="item_back item_container_style">
         <div class="item_list_container" v-if="state.questionList.length">
-          <header class="item_title">{{state.questionList[0].topic_name}}</header>
+          <header class="item_title">{{state.questionList[state.itemNum-1].topic_name}}</header>
           <ul>
             <li 
               class="item_list" 
-              v-for="(item, index) in state.questionList[0].topic_answer"
+              v-for="(item, index) in state.questionList[state.itemNum-1].topic_answer"
               @click="choosed(index)"
             >
               <span class="option_style" :class="{'current': currentNum === index}">{{chooseType(index)}}</span>
@@ -27,7 +27,8 @@
         </div>
       </div>
 
-      <span class="next_item button_style"></span>
+      <span class="next_item button_style" v-if="state.itemNum<state.questionList.length" @click="nextItem()"></span>
+      <span class="submit_item button_style"  v-else  @click="submit"></span>
     </div>
 
 
@@ -38,9 +39,11 @@
 import { useQuestionStore } from '@/store/question.js'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const questionStore = useQuestionStore()
 const { state } = storeToRefs(questionStore)
+const router = useRouter();
 
 
 const chooseType = (i) => {
@@ -62,6 +65,29 @@ const choosed = (i) => {
 defineProps({
   parent: ''
 })
+
+
+
+
+// 下一题
+const nextItem = () => {
+    if (currentNum.value == null) return
+    questionStore.setItemNum();
+    questionStore.saveAnswerList(currentNum.value);
+
+    currentNum.value = null;
+
+
+}
+
+// 提交
+const submit = () => {
+  if (currentNum.value == null) return
+  questionStore.saveAnswerList(currentNum.value);
+  router.push('/score');
+
+}
+
 
 </script>
 
@@ -160,4 +186,4 @@ defineProps({
 .submit_item{
   background-image: url(../assets/images/3-1.png);
 }
-</style>昨天 21:50
+</style>

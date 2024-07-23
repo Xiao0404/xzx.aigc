@@ -16,9 +16,23 @@ export const useQuestionStore = defineStore('question',() => {
         state.questionList = res.data.questions;
         })
     }
+
+    function setItemNum(){
+        state.itemNum++;
+    }
+    
+    function saveAnswerList(index){
+        state.answerList.push(index)
+    }
+
+
     return {
         state,
-        getQuestionList
+        getQuestionList,
+        setItemNum,
+        saveAnswerList
+
+
     }
 
 });
