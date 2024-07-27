@@ -7,3 +7,4 @@ yrm
     - yrm use 切换源 
     - yrm add 新增源
 
+ 有sync就是同步版本函数
