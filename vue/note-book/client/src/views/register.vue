@@ -48,6 +48,7 @@
     import { ref } from 'vue'
     import axios from '@/api'
     import { useRouter} from 'vue-router';
+    import { showToast } from 'vant';
     const username = ref('') 
     const password = ref('')
     const nickname = ref('')
@@ -59,9 +60,12 @@
         // 向后端发请求，将账号密码传给后端
         const res = await axios.post('/user/register',values)
             console.log(res);
-            alert('注册成功')
+            showToast('注册成功')
+            setTimeout(()=>{
+                router.push('/login')
+            },1500)
 
-            router.push('/login')
+          
         
           
 

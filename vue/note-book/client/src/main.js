@@ -8,7 +8,8 @@ import router from './router'
 import 'lib-flexible/flexible.js'
 import { Button } from 'vant';
 import 'vant/lib/index.css';
-import { Form, Field, CellGroup } from 'vant';
+import { Form, Field, CellGroup,Icon } from 'vant';
+
 
 const app = createApp(App)
 
@@ -18,6 +19,7 @@ app.use(Button);
 app.use(Form);
 app.use(Field);
 app.use(CellGroup);
+app.use(Icon);
 
 // 挂载代码在最后一行
 app.mount('#app')

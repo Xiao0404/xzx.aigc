@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import noteList from '@/views/noteList.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,11 +17,30 @@ const router = createRouter({
         meta:{
             title:'注册'
         }
+    },
+    {
+        path:'/',
+        redirect:'noteClass'
+    },
+    {
+        path: '/noteClass',
+        component: () => import('@/views/NoteClass.vue'),
+        meta:{
+            title:'笔记分类'
+        }
+    },
+    {
+        path: '/noteList/:title',
+        component: noteList,
+        meta:{
+            title:'笔记列表'
+        }
     }
+
   ]
 })
 
-const whitePath = ['/login','/register']
+const whitePath = ['/login','/register','noteClass','noteList']
 
 // 全局的前置路由守卫
 router.beforeEach((to, from, next) => {
