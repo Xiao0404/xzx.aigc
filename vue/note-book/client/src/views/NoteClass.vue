@@ -4,7 +4,7 @@
           <header>
               <div @click="menuVisible = true"><van-icon name="wap-nav"  /></div>
               <div>
-                  <van-icon name="edit" />
+                  <van-icon name="edit" @click="router.push('/notePublish')" />
                   <van-icon name="like-o" />
                   <van-icon name="search" />
               </div>

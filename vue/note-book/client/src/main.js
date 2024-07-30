@@ -8,11 +8,15 @@ import router from './router'
 import 'lib-flexible/flexible.js'
 import { Button } from 'vant';
 import 'vant/lib/index.css';
-import { Form, Field, CellGroup,Icon } from 'vant';
+import { Form, Field, CellGroup,Icon,Picker,Popup } from 'vant';
+import { Uploader } from 'vant';
 
 
 const app = createApp(App)
 
+app.use(Popup);
+app.use(Picker);
+app.use(Uploader);
 app.use(createPinia())
 app.use(router)
 app.use(Button);

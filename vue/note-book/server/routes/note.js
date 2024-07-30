@@ -1,6 +1,9 @@
 const router = require('@koa/router')();
 const jwt = require('../utils/jwt.js');
-const { findNoteListByType,findNoteDetailById } = require('../controllers/index.js');
+const { findNoteListByType,findNoteDetailById,notePublish } = require('../controllers/index.js');
+const {formateTime} = require('../utils/formateTime.js');
+
+
 
 router.get('/findNoteListByType', jwt.verify(), async (ctx, next) => {
     // 检验token合理再去数据库中查找数据 返回给前端
@@ -62,7 +65,36 @@ router.get('/findNoteDetailById',async (ctx, next) => {
 })
 
 
+router.post('/note-publish',jwt.verify(),async (ctx, next) => {
+    const { title, note_type, note_content, head_img } = ctx.request.body;
+
+    const c_time = formateTime(new Date());
+    const m_time = formateTime(new Date());
 
 
+    try{
+        const res = await notePublish({title, note_content, head_img,note_type,userId:ctx.userId,nickname:ctx.nickname,c_time,m_time});
+        console.log(res);
+        if(res.affectedRows){
+            ctx.body = {
+                code: '800',
+                msg: '发布成功',
+                data:'success'
+            }
+        }else{
+            ctx.body = {
+                code: '803',
+                msg: '发布失败',
+                data: 'error'
+            }
+        }
+        
+    }catch(error){
+       console.log(error);
+
+    }
+
+})
+    
 
 module.exports = router;

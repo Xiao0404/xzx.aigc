@@ -17,6 +17,8 @@ function verify(){
         const decode = jwt.verify(jwtToken,'666')
         if(decode.id){ // 合法
             ctx.userId = decode.id
+            ctx.nickname = decode.nickname
+    
 
           await next()
           // await 会让 next 立即执行
