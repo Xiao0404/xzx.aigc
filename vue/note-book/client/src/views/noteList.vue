@@ -1,45 +1,64 @@
 <template>
+
   <div class="note-list">
     <ul>
-      <li>
+      <li v-for="item in noteList" :key="item.id" @click="goNoteDetail(item.id)">
         <div class="img">
-          <img src="" alt="">
+          <img :src=item.head_img alt="">
         </div>
-        <div class="time">2024-7-29</div>
-        <div class="title">标题</div>
-      </li>
-      <li>
-        <div class="img">
-          <img src="" alt="">
-        </div>
-        <div class="time">2024-7-29</div>
-        <div class="title">标题</div>
-      </li>
-      <li>
-        <div class="img">
-          <img src="" alt="">
-        </div>
-        <div class="time">2024-7-29</div>
-        <div class="title">标题</div>
+        <div class="time">{{ item.c_time }}</div>
+        <div class="title">{{ item.title }}</div>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router';
+import { useRoute,useRouter} from 'vue-router';
 import axios from '@/api';
+import { ref ,onMounted  } from 'vue';
 
+const noteList = ref([])
 const route = useRoute();
+const router = useRouter();
 // 两种方法传承都行，但是注意，params需要在路由那里扩展url
 // const title = route.params.title;
 const title = route.query.title;
 
-const res = await axios.get('/findNoteListByType', {
+ axios.get('/findNoteListByType', {
   params: {
     note_type: title
   }
+}).then(res => {
+
+noteList.value = res.data
+console.log(noteList.value);
 })
+
+// const fetchNoteList = async () => {
+//   try {
+//     const res = await axios.get('/findNoteListByType', {
+//       params: {
+//         note_type: title
+//       }
+//     });
+//     noteList.value = res.data;
+//     console.log(noteList.value);
+//   } catch (error) {
+//     console.error('Error fetching note list:', error);
+//   }
+// };
+
+// onMounted(() => {
+//   fetchNoteList();
+// });
+
+
+const goNoteDetail = (id) => {
+    router.push({path:'/noteDetail',query:{id:id}})
+}
+
+
 
 </script>
 

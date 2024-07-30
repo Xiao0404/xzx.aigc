@@ -57,9 +57,17 @@ const findNoteListByType = (note_type, id) => {
 };
 
 
+// 根据笔记id查找数据
+const findNoteDetailById = (note_id) => {
+    const _sql = `select * from note where id="${note_id}"`;
+    return allService.query(_sql);
+};
+
+
 module.exports = {
     userLogin,
     userFind,
     userRegister,
-    findNoteListByType
+    findNoteListByType,
+    findNoteDetailById
 }

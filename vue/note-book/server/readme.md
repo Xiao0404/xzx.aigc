@@ -15,6 +15,9 @@
 
 # await next() 确保了在调用 next 后，当前中间件会等待下一个中间件执行完成后再继续执行（如果有需要）
 
+# koa中的数据请求
+    - post请求数据在body(useBodyParser)，通过ctx.request.body去获取
+    - get请求数据在url(useRoute)，通过ctx.request.query去url获取
 # 后端分为三层
     - 路由层  
     - 控制器  控制后端响应页面
