@@ -49,8 +49,8 @@ const menuVisible = ref(false);
 
 // 跳转列表页面
 const ToTheme = (title) => {
-  router.push({ path: `/noteList/${title}` });
-//   router.push({path: '/noteList', query: { title}})
+//   router.push({ path: `/noteList/${title}` });
+  router.push({path: '/noteList', query: { title}})
 
 };
 

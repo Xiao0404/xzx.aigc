@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import noteList from '@/views/noteList.vue';
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -30,7 +31,7 @@ const router = createRouter({
         }
     },
     {
-        path: '/noteList/:title',
+        path: '/noteList',
         component: noteList,
         meta:{
             title:'笔记列表'
@@ -47,7 +48,7 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.title
     if(!whitePath.includes(to.path)){
         // 判断浏览器有无userInfo
-        if(!localStorage.getItem('userInfo')){ //没登录
+        if(!localStorage.getItem('userInfo') || !localStorage.getItem('token')){ //没登录
            router.push('/login')
            return
         }else{

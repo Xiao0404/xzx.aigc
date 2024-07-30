@@ -1,5 +1,7 @@
 import axios from "axios";
 import { showToast } from 'vant';
+import router from "../router/index.js";
+
 axios.defaults.baseURL = "http://localhost:3000";
 // 告诉前端后端返回的数据，请求头
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -26,6 +28,7 @@ axios.interceptors.response.use(res => {
         if(res.data.code !== '800'){
             // 逻辑错误
             showToast(res.data.msg)
+            
             return Promise.reject(res)
         }else {
             return res.data

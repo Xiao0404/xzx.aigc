@@ -32,8 +32,8 @@ import axios from '@/api';
 
 const route = useRoute();
 // 两种方法传承都行，但是注意，params需要在路由那里扩展url
-const title = route.params.title;
-// const title = route.query.title;
+// const title = route.params.title;
+const title = route.query.title;
 
 const res = await axios.get('/findNoteListByType', {
   params: {
