@@ -83,13 +83,19 @@ router.post('/note-publish',jwt.verify(),async (ctx, next) => {
             }
         }else{
             ctx.body = {
-                code: '803',
+                code: '804',
                 msg: '发布失败',
                 data: 'error'
             }
         }
         
     }catch(error){
+        ctx.body = {
+            code: '805',
+            data: error,
+            msg: '服务器异常'
+        }
+
        console.log(error);
 
     }
