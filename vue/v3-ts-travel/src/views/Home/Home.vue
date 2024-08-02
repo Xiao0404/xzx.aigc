@@ -52,6 +52,26 @@
                 </div>
                 </div>
             </section>
+            <section class="title">
+                <h2>最近浏览</h2>
+               <RecentlyViewCard :items="recentlyViewedState" />
+            </section>
+            <section>
+        <h2 class="title">想去哪里玩？</h2>
+        <div class="flex w-screen overflow-x-scroll space-x-2 px-4">
+          <!-- <div class="region-item flex-[0_0_auto]" v-for="item in discountInfo" :key="item.region">
+            <div class="item-wrapper w-32 h-20 rounded-lg overflow-hidden relative">
+              <img :src="item.discounts[0].cover" alt="" />
+              <div class="item-mask absolute w-full h-full bg-black opacity-20 bottom-0"></div>
+              <div class="item-title absolute z-10 text-sm font-bold text-white bottom-1 left-1">{{ item.region }}</div>
+            </div>
+          </div> -->
+        </div>
+      </section>
+      <section>
+        <h2 class="title">探索更多</h2>
+        <PromotionalList class="px-4" :items="promotionalList" :next="handleNextPage" />
+      </section>
         </main>
     </div>
 </template>
@@ -61,6 +81,10 @@
 // pinia 数据管理 + 组件显式
 import {toRefs,ref} from 'vue'
 import { useHomeStore } from '@/store/homeStore'
+import RecentlyViewCard from '@/components/RecentlyViewCard.vue'
+import { useDiscountStore }  from '@/store/discountStore'
+
+
 const homeStore = useHomeStore()
 const {
     topBarState,
@@ -70,6 +94,8 @@ const {
 
 const searchField = ref('')
 
+const discountStore = useDiscountStore()
+const { discountInfo } = toRefs(discountStore)
 
 </script>
 

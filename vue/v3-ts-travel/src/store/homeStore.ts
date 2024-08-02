@@ -4,7 +4,7 @@ import { ref } from "vue";
 // 勾引 面试官  es6 module  问题
 import type {
     HomeTopBarItem,
-    recentlyViewedState
+    RecentlyViewedItem
 } from "../types/home";
 
 
@@ -58,7 +58,7 @@ export const useHomeStore  = defineStore('home',() => {
           },
     ])
 
-    const recentlyViewedState = ref<recentlyViewedState[]>([
+    const recentlyViewedState = ref<RecentlyViewedItem[]>([
         {
             title: "曼谷 & 芭达雅景点通票",
             cover:

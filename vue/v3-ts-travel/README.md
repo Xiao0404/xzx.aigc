@@ -8,6 +8,14 @@
         export type typeName = {    type不属于js  属于ts的
         }
     - .vue 文件中加入 lang="ts"支持
+    - interface 接口 也可以用于 类型定义
+        - login 页面 使用 interface 声明 LoginInfo 接口 包含 username password 两个字段
+    - 组件约束props 时候
+        interface Props{ 
+            username:string;
+        }
+    - 函数参数要给类型约束
+
 - 工程化 vite
     - 快
     - 先编译再运行
@@ -26,7 +34,9 @@
     - 组件开发文档
     - 学习刀很多组件的写法 比如 具名插槽
         - 组件的定制性
-        - 
+    - van-search  keep-alive
+    - van-field van-form(model + rules)
+    - 组件使用  项目正在使用的UI 组件库  公司的开发文档
 - hooks   useRouter    手写自定义一个hook
 - 高质量的组件 
 - tailwindcss 界面   css能力较强
@@ -37,6 +47,9 @@
     - 如果不用渐变， 就要用图片吧 (发送http请求 + 图片比较大)？ -> v性能优化
     - flex
         flex-direction  self-items  flex: flex-basic flex-shrink flex-grow
+    - 了解@apply 的进阶功能
+        tailwindcss 缺点是类名要写一大堆
+        @apply 可以把一堆类名交给一个类  放在 css/common.css 复用
 - html5 的能力点
     语义化标签
         main
@@ -51,6 +64,13 @@
 - css
     - flex flex: 0 0 auto   col    flex-end    flex:1
     - gradient AI 结合 语义化
+
+- 组件化思想
+    - 复用
+    - 降低页面的复杂性 代码可维护提升
+        - props  父子数据通信  
+        - 组件只需要负责显示，性能更好
+
 - vue 语法考点安排
     - 插槽
 
@@ -87,4 +107,27 @@
     - vant 
     - html5 语义化
     - pinia  toRefs() 流程
+    - 项目架构
+        - src 开发总目录 
+            - router
+            - store
+            - views
+            - components
+            - assets
+            - utils
+            - types
+            - api
+            - hooks
+           
+
+
     
+- 首页功能介绍
+- 登入页功能介绍
+    - van-form   model  rule
+    - van-file  checkbox 自定义
+        template #input
+        van-checkbox  v-model="checked"
+        说明 ...
+    - ts interface  约束 LoginInfo
+         ref<boolean>
