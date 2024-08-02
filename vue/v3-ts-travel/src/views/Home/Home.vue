@@ -29,7 +29,29 @@
                         <div class="topbar-item__text text-xs">{{ item.title }}</div>
                     </div>
                 </section>
+                <van-button type="primary" block size="small" 
+                color="rgb(246,247,248)">
+                    <div class="text-black flex">
+                        <van-icon name="apps-o" size="1rem" />
+                        <span class="text-cs ml-2 font-bold">
+                            所有分类
+                        </span>
+                       
+                    </div>
+
+                </van-button>
             </header>
+            <section class="navbar flex overflow-x-scroll w-screen space-x-4 px-4">
+                <div class="navbar-item flex flex-col border rounded-lg
+                flex-[0_0_auto] w-24"
+                v-for="item in navBarState"
+                :key="item.title">
+                <div class="navbar-item__text text-xs p-2 pb-0"> {{ item.title }} </div>
+                <div class="navbar-item__icon self-end p-2">
+                    <van-icon :name="item.icon" size="1.5rem" />
+                </div>
+                </div>
+            </section>
         </main>
     </div>
 </template>
@@ -37,7 +59,7 @@
 <script setup>
 // 数据？
 // pinia 数据管理 + 组件显式
-import {toRefs} from 'vue'
+import {toRefs,ref} from 'vue'
 import { useHomeStore } from '@/store/homeStore'
 const homeStore = useHomeStore()
 const {
@@ -45,6 +67,9 @@ const {
     navBarState,
     recentlyViewedState
 } = toRefs(homeStore)
+
+const searchField = ref('')
+
 
 </script>
 

@@ -10,8 +10,19 @@ const rootRoutes :RouteRecordRaw[] = [
     {
         path: 'home',
         name: 'Home',
-
-        component: () => import('../views/HomePage/HomePage.vue')
+        // 性能优化
+        meta: {
+            cache: true
+        },
+        component: () => import('../views/Home/Home.vue')
+    },
+    {
+        path: 'discount',
+        name: 'Discount',
+        meta: {
+            cache: false
+        },
+        component: () => import('../views/Discount/Discount.vue')
     }
 ]
 

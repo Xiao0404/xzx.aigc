@@ -6,7 +6,6 @@
     - pinia 里所有响应式数据都要添加类型约束  ref<泛型>
     - types 目录是类型定义的专属目录，按模块申明类型
         export type typeName = {    type不属于js  属于ts的
-
         }
     - .vue 文件中加入 lang="ts"支持
 - 工程化 vite
@@ -49,11 +48,43 @@
         import * as R
         import R,{x,y}  from  ''
         import type R 
+- css
+    - flex flex: 0 0 auto   col    flex-end    flex:1
+    - gradient AI 结合 语义化
 - vue 语法考点安排
     - 插槽
+
     - toRefs
-        将Store 变成组件方便结构的响应式对象
+        将Store 变成组件方便解构的响应式对象
+        当从一个响应式对象直接解构时，它的属性会丢失响应式，原因是解构的是值
+        所以用 toRefs 将响应对象 方便的拆解为多个独立的响应式引用对象
+        应用场景
+            pinia  解构多个响应式共享状态的时候
+    - keep alive
+        vue 性能优化的语法  
+            - router-vue 路由的切换，组件会重新渲染
+            - 首页不应该被卸载，频繁回到首页，为了提升体验，keep alive 不卸载组件，只切换
+            - 任何需要缓存的组件 
+            - v-slot 插槽指令，指定内部的slot 部分即渲染组件
+            - keep-alive 全局组件，缓存组件 性能优化
+            - include  route-name 数组，指定缓存组件  结合 route.meta.cache |  route.meta.keepAlive
+                exclude  排除缓存组件
+            - computed 计算属性 + useRouter 
+                router.allRoutes().filter.map()
     - watch
     - 懒加载
     - 性能优化
+        - 路由懒加载
+        - gradient
+        - vite vant
+        -keep-alive
     - 防抖节流
+
+- 项目写法
+    - 先选择项目
+        AI 豆包/通义千问/星火
+        大厂的热门项目仿写  小红书 蔚来 小米 ...  移动端的
+    - vant 
+    - html5 语义化
+    - pinia  toRefs() 流程
+    
