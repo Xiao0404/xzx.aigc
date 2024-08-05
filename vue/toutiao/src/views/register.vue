@@ -1,9 +1,11 @@
 <template>
-  <demo1 />
+    <div>
+            re
+    </div>
 </template>
 
 <script setup>
-  import demo1 from './components/demo5/parent.vue'
+
 </script>
 
 <style lang="scss" scoped>

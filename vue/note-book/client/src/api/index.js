@@ -2,7 +2,7 @@ import axios from "axios";
 import { showToast } from 'vant';
 import router from "../router/index.js";
 
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "http://121.41.95.44:3000";
 // 告诉前端后端返回的数据，请求头
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
