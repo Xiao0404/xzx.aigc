@@ -16,8 +16,8 @@
             env
         } from 'http://cdn.jsdmirror.com/npm/@xenova/transformers@2.6.0'
         env.allowLocalModels = false; // 不用加载本地大模型
-
-        let  pipe = await pipeline('sentiment-analysis'); // 分类
+// react loading  组件告知用户
+        let  pipe = await pipeline('sentiment-analysis'); // 分类  download  LLM 
         let  result = await pipe('I love you');
         console.log(result);
         let  result2 = await pipe('I hate you');

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import LanguageSelector from './components/LanguageSelector'
 import './App.css'
+import Progress from './components/Progress'
 
 const App = () => {
   // useState 现在最牛逼的hook技术 
@@ -16,7 +17,7 @@ const App = () => {
   const worker = useRef(null); // 响应式 web worker 对象
 
   useEffect(() => {
-    // 局部 onMouted
+    // 局部 onMounted
     // console.log('mounted')
     if (!worker.current) {
       worker.current = new Worker(
@@ -27,7 +28,7 @@ const App = () => {
       console.log(worker.current)
 
       worker.current.addEventListener('message', (e) => {
-        console.log(e)
+        console.log(e,'11111111111111')
       })
      
     }
@@ -80,6 +81,7 @@ const App = () => {
         </textarea>
       </div>
       <button disabled={disabled} onClick={translate}>Translate</button>
+      <Progress text="LLM" percentage={20} ></Progress>
     </>
   )
 }
