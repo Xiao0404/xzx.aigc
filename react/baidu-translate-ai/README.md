@@ -119,3 +119,19 @@
         结果语言 中文
         待翻译文本
         翻译结果
+
+    - 介绍项目小作文
+        - 本项目基于React 和来自 HuggingFace 社区的 Transformers.js  实现了AI翻译功能，它让我感受到前端未来独立开发AI项目的魅力
+        - 不管是操作系统，还是手机，甚至是未来的机器人，端LLM的未来即将到来，前端AI大机会到来了，前端，后端，AI，js都可以搞。
+        - 本项目focus 了 AI功能的实现和 性能优化  以及良好返回的AI用户体验
+        - React 开发了 LanguageSelector 组件， Progress 组件，使用了 React hooks useState 和 useEffect 和 useRef 等 hook 函数。 来管理状态和生命周期钩子函数，实现了从源语言到目标语言的翻译功能。 
+        - AI 功能需要下载大模型，执行开销比较大，选择 web worker 多线程方案，
+            将 AI 任务交给 worker 线程，主线程只做 UI 
+            主线程和worker 线程通过消息机制通信
+            模型下载会有  initiate 、 progress 、 done  文件名+进度
+            postMessage  交给主线程  更新进度条
+            执行翻译拿到结果后，再次通知主线程显示结果
+        - transformer.js  核心功能
+            - pipeline (task,model,options) AI功能有很多，使用es6 的单例模式封装了 MyTranslationPipeline 类 做了性能优化，只需要下载大模型，初始化一次，
+              options progress_callback 它是我们获取下载进度的回调函数
+            - pipe(text,options)  调用上一步返回的 pipe 函数，传递文本 及相关语言，执行 AI 翻译，再次 postMessage 通知页面显示结果

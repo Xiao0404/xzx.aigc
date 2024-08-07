@@ -13,22 +13,77 @@ const App = () => {
   const [ input, setInput] = useState('')
   const [ output, setOutput] = useState('')
   const [disabled, setDisabled] = useState(false)
-  // 
+  // 进度条数据数组 { fileName:, percent:'' }
+  const [progressItems, setProgressItems] = useState([]); 
+  // LLM 准备好了吗？
+  const [ready, setReady] = useState(true);
   const worker = useRef(null); // 响应式 web worker 对象
 
   useEffect(() => {
-    // 局部 onMounted
+    // 局部 onMouted
     // console.log('mounted')
     if (!worker.current) {
       worker.current = new Worker(
-        new URL("./work.js", import.meta.url), {
+        new URL("./worker.js", import.meta.url), {
           type: 'module'
         }
       )
       console.log(worker.current)
 
       worker.current.addEventListener('message', (e) => {
-        console.log(e,'11111111111111')
+        // console.log(e, '+++++++++++++++++++')
+        switch(e.data.status) {
+          // LLM 依赖的多个文件触发 initiate 事件
+          case 'initiate':
+            setReady(false)
+            // console.log(e.data, '///////')
+            // 接受一个函数 
+            // 上一次的状态
+            setProgressItems((prev) => [...prev, e.data])
+            break;
+          case 'progress':
+            // console.log(e.data, '?????')
+            setProgressItems(
+              prev => prev.map(item => {
+                if (item.file === e.data.file) {
+                  return {...item, progress: e.data.progress};
+                } else {
+                  return item;
+                }
+              })
+            )
+            break;
+          case 'done':
+            setProgressItems(prev => prev.filter(
+              item => item.file !== e.data.file
+            ))
+            break;
+          case 'ready':
+            setReady(true)
+            break
+
+          case 'update':
+            setOutput(e.data.output)
+            break;
+
+            case 'completed':
+            setDisabled(false)
+            break;
+
+
+
+            // setProgressItems(
+            //   (prev) => prev.map(item => {
+            //     console.log(item, '------------');
+            //     if (item && item.file && item.file === e.data.file) {
+            //       return {
+            //         ...item,
+            //         progress: e.data.progress
+            //       }
+            //     }
+            //   })
+            // )
+        }
       })
      
     }
@@ -46,7 +101,9 @@ const App = () => {
     // 前端游戏， 加密， 压缩， AI  , 多线程 Web Worker 
     // html5 浏览器提供的多线程机制（纯计算类，不能做DOM, 没有this ）
     worker.current.postMessage({
-      text: '请帮我翻译'
+      text: input,
+       src_lang:sourceLanguage,
+      tgt_lang:targetLanguage
     })
   }
   
@@ -64,7 +121,7 @@ const App = () => {
         <LanguageSelector 
           type="Target"
           defaultLanguage={targetLanguage}
-          onChange={x => setSourceLanguage(x.target.value)}
+          onChange={x => setTargetLanguage(x.target.value)}
         />
        
       </div>
@@ -81,7 +138,19 @@ const App = () => {
         </textarea>
       </div>
       <button disabled={disabled} onClick={translate}>Translate</button>
-      <Progress text="LLM" percentage={20} ></Progress>
+      {/* <Progress text="下载中"/> */}
+      <div className="progress-bars-container">
+      {
+        ready === false && (
+          <label>Loading models...</label>
+        )
+      }
+      {progressItems.map((data) => (
+        <div key={data.file}>
+          <Progress text={data.file} percentage={data.progress} />
+        </div>
+      ))}
+      </div>
     </>
   )
 }
