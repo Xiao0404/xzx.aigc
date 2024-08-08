@@ -10,7 +10,7 @@ import 'vant/lib/index.css';
 import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
-
+import { Lazyload,Uploader, Field, Popup, Picker, Checkbox, CheckboxGroup, Button } from 'vant';
 
 const pinia = createPinia()
 const app = createApp(App)
@@ -19,4 +19,6 @@ app
     .use(ElementPlus)
     .use(router)
     .use(pinia)
+    .use(Lazyload)
     .mount('#app')
+

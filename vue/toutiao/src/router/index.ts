@@ -30,6 +30,16 @@ const rootRoutes: RouteRecordRaw[] = [
                 keepAlive: false,
                 title: '首页'
             }
+        },
+        {
+            path:'/shopping',
+            name:'shopping',
+            component: () => import('../views/Shopping.vue'),
+        },
+        {
+            path:'/account',
+            name:'account',
+            component: () => import('../views/Account.vue'),
         }
     ]
 
@@ -69,6 +79,13 @@ const rootRoutes: RouteRecordRaw[] = [
                 keepAlive: true,
                 title: 'AI智能推荐'
             }
+        },
+        {
+            path: '/article/:id',
+            name:'Article',
+            component: () => import('../views/Article.vue'),
+            props: true
+
         }
     ]
 

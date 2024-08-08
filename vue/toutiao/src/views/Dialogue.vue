@@ -126,7 +126,7 @@ const submit = async () => {
         isLoading.value = true;
 
         const temp = await getCozeData(question);
-        // console.log(temp, '-----------------------------------');
+        console.log(temp, '-----------------------------------');
 
         isLoading.value = false;
 
@@ -146,8 +146,8 @@ const recommendClick = (item: string) => {
 
 // 返回最终回答的数据
 const contentAnalyze = (content: string) => {
-    const detailIndex = content.indexOf('详情:');
-    const photoIndex = content.indexOf('照片:');
+    const detailIndex = content.indexOf('摘要:');
+    const photoIndex = content.indexOf('封面:');
     if (detailIndex === -1 || photoIndex === -1) {
         return content;
     }
