@@ -5,7 +5,7 @@
       <p>{{ news.description }}</p>
     </div>
     <div v-if="news.img" class="image-container">
-      <img :src="news.img" alt="news image" />
+      <img :src="news.img" alt="news image" v-lazy="news.img" />
     </div>
   </el-card>
 </template>

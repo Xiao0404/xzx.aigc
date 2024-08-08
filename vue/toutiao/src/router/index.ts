@@ -27,7 +27,7 @@ const rootRoutes: RouteRecordRaw[] = [
             name: 'home',
             component: () => import('../views/Home.vue'),
             meta: {
-                keepAlive: false,
+                keepAlive: true,
                 title: '首页'
             }
         },
@@ -35,11 +35,20 @@ const rootRoutes: RouteRecordRaw[] = [
             path:'/shopping',
             name:'shopping',
             component: () => import('../views/Shopping.vue'),
+            meta:{
+                keepAlive:false,
+                title:'购物'
+            }
         },
         {
             path:'/account',
             name:'account',
             component: () => import('../views/Account.vue'),
+            meta:{
+                keepAlive:false,
+                title:'账户'
+            }
+
         }
     ]
 
@@ -84,7 +93,12 @@ const rootRoutes: RouteRecordRaw[] = [
             path: '/article/:id',
             name:'Article',
             component: () => import('../views/Article.vue'),
-            props: true
+            props: true,
+            meta: {
+                keepAlive: false,
+                title: '文章详情'
+            }
+
 
         }
     ]

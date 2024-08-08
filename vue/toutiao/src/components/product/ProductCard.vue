@@ -2,7 +2,7 @@
     <div class="product-card">
       <img :src="card.img" :alt="card.title" class="card-image" v-lazy="card.img" />
       <div class="card-content">
-        <h3 class="card-title">{{ card.title }}</h3>
+        <h3 class="card-title ">{{ card.title }}</h3>
         <p class="card-description">{{ card.description }}</p>
       </div>
     </div>
@@ -38,6 +38,7 @@ const props = defineProps<{
   .card-content {
     .card-title {
       font-size: 1.2em;
+      color: red;
       margin: 0 0 8px;
     }
     

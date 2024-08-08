@@ -10,13 +10,13 @@
             <div class="avatar" :style="{ backgroundImage: `url(${article?.avatar})` }"></div>
             <div>
               <h4>{{ article?.source }}</h4>
-              <el-tag>{{ article?.time }} hours ago</el-tag>
+              <el-tag>{{ article?.time }} </el-tag>
             </div>
             <el-button @click="toggleAttention">{{ article?.attention ? 'Unfollow' : 'Follow' }}</el-button>
           </div>
           <p>{{ article?.description }}</p>
           <div v-if="article?.img">
-            <img :src="article.img" alt="article image" />
+            <img :src="article.img" alt="article image"  />
           </div>
           <p class="intro">{{ article?.intro }}</p>
           <div class="tags">
