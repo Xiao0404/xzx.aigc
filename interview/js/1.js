@@ -16,4 +16,6 @@ let arr = [1,3,5,4,2,6,7,8,9,10];
 
  let res =     arr.concat(1,2,3)
 
-console.log(res);
+ let res1 = arr.sort((a,b) =>a-b)
+
+console.log(res1);

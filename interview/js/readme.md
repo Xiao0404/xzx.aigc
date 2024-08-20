@@ -25,7 +25,23 @@
 
 # 3.谈谈js中的类型转换机制
 - 是什么：
-    js中存在原始数据类型和引用数据类型，通常开发过程中可能存在人为主动将类型转换就是显示类型转换，
+    js中存在原始数据类型和引用数据类型，通常开发过程中可能存在人为主动将类型转换就是显示类型转换，  引用类型转基础布尔类型为 true
     js引擎 自动转换的就是隐式类型转换
 
-- 显示: Number(xx)  String(xx)  Boolean(xx)  Array(xx)  Object(xx)  Symbol(xx)
+- 显示: Number(xx)  String(xx)  Boolean(xx)  Array(xx)  Object(xx)  Symbol(xx)  构造函数
+- 隐式:  =,-,*,/,%,if,while,==
+
+
+        
+        [] == ![]
+        [] == false
+        [] == 0
+        '' == 0
+        0 == 0
+        
+        ToNumber([])
+        toPrimitive([],Number)
+
+
+# 4.  == Vs ===
+ 左边判断值相等     右边
