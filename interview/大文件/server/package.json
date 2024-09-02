@@ -8,5 +8,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "fse": "^4.0.1",
+    "multiparty": "^4.2.3"
+  }
 }

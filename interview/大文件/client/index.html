@@ -76,8 +76,21 @@
             console.log(requestList);
             Promise.all(requestList).then(res=>{
                 console.log(res,"成功");
+                mergeChunks()
+
                 
             })
+
+            // 合并请求
+            function mergeChunks(size = 5 * 1024 * 1024){
+                axios.post('http://localhost:3000/merge',{
+                    fileName:fileObject.name,
+                    size
+                }).then(res => {
+                    console.log(`${fileObject.name}合并成功}`);
+                   
+                })
+            }
             
             
             // axios.post()
