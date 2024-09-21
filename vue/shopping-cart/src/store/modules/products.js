@@ -16,13 +16,6 @@ const actions = {
         })
 
     }
-
-
-   
-
-
-
-
 }
 
 // 比 pinia 复杂的地方
@@ -41,9 +34,6 @@ const mutations = {
         
         product.inventory--
     }
-
-   
-
 }
 
 // store.product.all

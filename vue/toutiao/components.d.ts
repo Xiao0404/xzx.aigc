@@ -7,7 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     NewsCard: typeof import('./src/components/NewsCard.vue')['default']
     NewsList: typeof import('./src/components/NewsList.vue')['default']
     ProductCard: typeof import('./src/components/product/ProductCard.vue')['default']
@@ -33,7 +32,6 @@ declare module 'vue' {
     VanPicker: typeof import('vant/es')['Picker']
     VanPopup: typeof import('vant/es')['Popup']
     VanSearch: typeof import('vant/es')['Search']
-    VanSpace: typeof import('vant/es')['Space']
     VanTab: typeof import('vant/es')['Tab']
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']

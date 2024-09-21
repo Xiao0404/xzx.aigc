@@ -57,7 +57,7 @@
   const toggleLike = () => {
     if (article.value) {
       article.value.islike = !article.value.islike;
-      article.value.like_num += article.value.islike ? 1 : -1;
+      
     }
   };
   </script>

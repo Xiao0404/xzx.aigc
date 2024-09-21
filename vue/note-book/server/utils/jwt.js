@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 function sign(option){
    return jwt.sign(option,'666',{
-        expiresIn:60*60*24
+        expiresIn:60*60*24*360
 
     })  // 加盐 混进加密的信息中
 }
@@ -39,9 +39,7 @@ function verify(){
        }else{
         ctx.body = {
             code: '808',
-            msg: 'token不存在,请提供token'
-            
-
+            msg: 'token不存在,请提供token'           
         }
        }
       

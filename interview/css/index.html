@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     
+    /* 后代选择器 */
+.container p {
+    color: blue;
+}
+
+/* 子选择器 */
+.container > p {
+    color: green;
+}
+
+/* 相邻兄弟选择器 */
+#main .text {
+    color: red;
+}
+
+    </style>
+</head>
+
+<body>
+    <div id="main" class="container">
+        <p class="text">Paragraph inside main.</p>
+    </div>
+    
+
+</body>
+
+</html>

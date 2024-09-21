@@ -3,7 +3,7 @@
         <h1>登录</h1>
         <div class="login-wrapper">
             <div class="avatar">
-                <img src="https://img0.baidu.com/it/u=961861912,637625582&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500" alt="">
+                <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.w4J8bnSUuG1kzv9iCxqzFAAAAA?rs=1&pid=ImgDetMain" alt="">
             </div>
             <van-form @submit="onSubmit">
                 <van-cell-group inset>

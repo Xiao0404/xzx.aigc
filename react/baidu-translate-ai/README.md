@@ -135,3 +135,19 @@
             - pipeline (task,model,options) AI功能有很多，使用es6 的单例模式封装了 MyTranslationPipeline 类 做了性能优化，只需要下载大模型，初始化一次，
               options progress_callback 它是我们获取下载进度的回调函数
             - pipe(text,options)  调用上一步返回的 pipe 函数，传递文本 及相关语言，执行 AI 翻译，再次 postMessage 通知页面显示结果
+
+
+
+翻译过程
+
+用户在输入框中输入文本，选择源语言和目标语言。
+当用户点击“Translate”按钮时，主线程会通过postMessage将翻译请求发送到Worker线程。
+Worker线程调用MyTranslationPipeline的单例实例，执行翻译任务。在任务执行过程中，Worker线程会不断将进度信息通过消息机制反馈给主线程。
+翻译完成后，Worker线程将结果传回主线程，并显示在输出框中。
+
+
+本项目的核心是Transformers.js库，这是一个来自HuggingFace社区的NLP工具集。通过该库，可以轻松实现AI任务的前端化处理。本项目使用了Transformers.js的pipeline功能来处理翻译任务。
+
+MyTranslationPipeline类：为了优化性能，项目使用ES6的单例模式封装了MyTranslationPipeline类。这个类确保了翻译模型只被实例化一次，避免了重复加载模型的开销。
+pipeline任务：pipeline函数接受翻译任务的相关参数，并通过回调函数提供实时的加载进度。翻译任务一旦完成，结果会通过Worker线程传回主线程，并更新到UI上。
+

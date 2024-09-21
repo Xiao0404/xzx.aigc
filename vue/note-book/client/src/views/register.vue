@@ -3,7 +3,7 @@
         <h1>注册</h1>
         <div class="login-wrapper">
             <div class="avatar">
-                <img src="https://ww1.sinaimg.cn/mw690/0073ozWdly1hr3qefka09j30u00u0ke0.jpg" alt="">
+                <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.w4J8bnSUuG1kzv9iCxqzFAAAAA?rs=1&pid=ImgDetMain" alt="">
             </div>
             <van-form @submit="onSubmit">
                 <van-cell-group inset>

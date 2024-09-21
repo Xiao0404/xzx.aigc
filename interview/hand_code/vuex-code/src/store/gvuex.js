@@ -33,10 +33,7 @@ class Store{
         Object.keys(options.getters).forEach(name =>{
             const fn = options.getters[name]; // 计算函数
             this.getters[name] = computed(() => fn(this.state))
-
         })
-
-
 
         }
 

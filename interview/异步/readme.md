@@ -14,3 +14,6 @@
 
 
 # async/await
+    Promise + generator 语法糖 实现的
+    - Thunk
+    - co 

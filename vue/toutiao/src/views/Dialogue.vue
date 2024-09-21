@@ -81,7 +81,7 @@
 <script lang="ts" setup>
 import { ref, reactive, watch } from 'vue';
 import { useRouter } from 'vue-router'
-import getCozeData from '@/api/chatCoze.ts'
+import getCozeData from '@/api/chatCoze'
 
 const router = useRouter();
 

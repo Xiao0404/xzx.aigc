@@ -7,6 +7,7 @@ import {VantResolver} from '@vant/auto-import-resolver'
 // path.resolve 绝对物理路径  node 环境
 // https://vitejs.dev/config/
 export default defineConfig({
+  base:'/',
   plugins: [
     vue(),
     Component({

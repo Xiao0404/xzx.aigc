@@ -39,9 +39,7 @@ const actions = {
                     }
                     commit('products/decrementProductInventory',{id: product.id},{root: true})
                 }
-
-                
-                
+     
         }
 }
 

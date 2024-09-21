@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaint Example</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <button onclick="triggerRepaint()">Trigger Repaint</button>
+    <script>
+        function triggerRepaint() {
+            var box = document.getElementById('box');
+            box.style.backgroundColor = 'blue'; // 修改背景颜色会触发重绘
+        }
+    </script>
+</body>
+</html>

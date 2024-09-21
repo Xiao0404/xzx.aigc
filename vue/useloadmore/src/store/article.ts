@@ -8,111 +8,111 @@ export const useArticleStore = defineStore('article',() => {
        const _articles: Article[]  = [
         {
         id:1,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:2,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:3,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:4,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:5,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:6,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:7,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:8,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:9,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:10,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:11,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:12,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:13,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:14,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:15,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:16,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:17,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:18,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:19,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:20,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:21,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:22,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:23,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:24,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:25,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:26,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        },
        {
         id:27,
-        title: '胡总牛逼'
+        title: '我要成为前端高手'
        }
 
     ]

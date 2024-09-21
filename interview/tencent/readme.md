@@ -39,3 +39,12 @@
 
     - 闭包的应用场景
         防抖节流，柯里化，私有变量（单例模式） 惰性函数 偏函数
+    
+    - 判断数组的方法
+    1. Array.isArray(arr)
+    2. Object.prototype.toString.call(arr) === '[object Array]'
+    3. arr instanceOf Array
+    4. typeof + arr.length
+    function isArray(obj){
+        return obj != null && typeof obj === 'object' && 'length' in obj; 
+    }

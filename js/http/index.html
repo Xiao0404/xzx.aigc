@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST Request Example</title>
+</head>
+<body>
+    <h1>POST Request Example</h1>
+    <button id="postData">Post Data</button>
+
+    <script>
+        document.getElementById('postData').addEventListener('click', () => {
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',  // 使用POST方法
+                headers: {
+                    'Content-Type': 'application/json'  // 设置请求头，声明发送的是JSON格式数据
+                },
+                body: JSON.stringify({  // 将JavaScript对象转换为JSON字符串并发送
+                    title: 'foo',
+                    body: 'bar',
+                    userId: 1
+                })
+            })
+                .then(response => response.json())  // 解析响应数据为JSON格式
+                .then(data => console.log(data))    // 打印解析后的数据
+                .catch(error => console.error('Error:', error));  // 捕获并打印错误
+        });
+    </script>
+</body>
+</html>
