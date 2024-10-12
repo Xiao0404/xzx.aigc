@@ -89,6 +89,15 @@ const routes = [
             keepAlive: false,
             title: '文章详情'
         }
+    },
+    {
+        path: '/search-results',
+        name: 'SearchResults', // 确保这里有 name 属性
+        component: () => import('../components/SearchResults.vue') ,
+        meta: {
+            keepAlive: false,
+            title: '搜索结果'
+        }
     }
 ];
 const router = createRouter({

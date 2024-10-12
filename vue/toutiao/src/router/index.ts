@@ -2,6 +2,7 @@ import { createRouter,createWebHashHistory } from "vue-router";
 import { RouteRecordRaw } from "vue-router";
 
 
+
 const rootRoutes: RouteRecordRaw[] = [
         {
             path: '/',
@@ -100,6 +101,15 @@ const rootRoutes: RouteRecordRaw[] = [
             }
 
 
+        },
+        {
+            path: '/search-results',
+            name: 'SearchResults', // 确保这里有 name 属性
+            component: () => import('../components/SearchResults.vue') ,
+            meta: {
+                keepAlive: false,
+                title: '搜索结果'
+            }
         }
     ]
 
