@@ -22,7 +22,7 @@ function __VLS_template() {
     // CSS variable injection 
     // CSS variable injection end 
     let __VLS_resolvedLocalAndGlobalComponents;
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("pt-4 h-1/2  ") }, });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: (" h-1/2 p-0 ") }, });
     // @ts-ignore
     const __VLS_0 = {}
         .VanTabs;
@@ -52,9 +52,9 @@ function __VLS_template() {
         // @ts-ignore
         [VanTab, VanTab,];
         // @ts-ignore
-        const __VLS_7 = __VLS_asFunctionalComponent(__VLS_6, new __VLS_6({ title: ((item)), }));
-        const __VLS_8 = __VLS_7({ title: ((item)), }, ...__VLS_functionalComponentArgsRest(__VLS_7));
-        ({}({ title: ((item)), }));
+        const __VLS_7 = __VLS_asFunctionalComponent(__VLS_6, new __VLS_6({ title: ((item)), key: ((index)), }));
+        const __VLS_8 = __VLS_7({ title: ((item)), key: ((index)), }, ...__VLS_functionalComponentArgsRest(__VLS_7));
+        ({}({ title: ((item)), key: ((index)), }));
         const __VLS_11 = __VLS_nonNullable(__VLS_pickFunctionalComponentCtx(__VLS_6, __VLS_8));
         __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("swipeContent") }, });
         __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
@@ -81,8 +81,8 @@ function __VLS_template() {
     }
     __VLS_nonNullable(__VLS_5.slots).default;
     if (typeof __VLS_styleScopedClasses === 'object' && !Array.isArray(__VLS_styleScopedClasses)) {
-        __VLS_styleScopedClasses['pt-4'];
         __VLS_styleScopedClasses['h-1/2'];
+        __VLS_styleScopedClasses['p-0'];
         __VLS_styleScopedClasses['swipeContent'];
         __VLS_styleScopedClasses['mx-auto'];
         __VLS_styleScopedClasses['text-center'];
