@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="name">{{name}}</div>
+        <div class="age">{{age}}</div>
+        <br>
+        <div class="container">
+            <div class="item" v-for="item in list" :key="item.id">
+                <span>ID: {{item.id}}</span>
+                <div class="title">
+                    <template v-for="(value, key) in item.title" :key="key">
+                        <span v-if="key !== 'id'">{{ key.toUpperCase() }}: {{ value }}, </span>
+                    </template>
+                    <span>id: {{ item.title.id }}</span>
+                </div>
+                <span>price: {{item.price}}</span>
+                <hr>
+            </div>
+        </div>
+
+        <br>
+        <h2>请输入颜色(红色、粉色、绿色、紫色、蓝色)</h2>
+        <input type="text" v-model="color">
+        <br>
+        <div v-if="color === '红色'" :style="{ backgroundColor: 'red', width: '300px', height: '300px' }"></div>
+        <div v-else-if="color === '粉色'" :style="{ backgroundColor: 'pink', width: '300px', height: '300px' }"></div>
+        <div v-else-if="color === '绿色'" :style="{ backgroundColor: 'green', width: '300px', height: '300px' }"></div>
+        <div v-else-if="color === '紫色'" :style="{ backgroundColor: 'purple', width: '300px', height: '300px' }"></div>
+        <div v-else :style="{ backgroundColor: 'blue', width: '300px', height: '300px' }"></div>
+
+        <hr>
+        <br>
+        <div class="ex" >
+            {{a}}
+        </div>
+        <button @click="increase()">点击增加</button>
+        <span>按删除键递减</span>
+    </div> 
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp, ref, reactive } = Vue;
+
+        createApp({
+            setup() {
+                const name = ref('xyao');
+                const age = ref('20');
+                const list = reactive([
+                    { id:1, title:{a:99,id:0}, price:12 },
+                    { id:2, title:{b:919,id:4}, price:13 },
+                    { id:3, title:{c:9,id:5}, price:14 },
+                    { id:4, title:{d:77,id:2}, price:15 }
+                ]);
+
+                const color = ref('');
+
+                const a = ref(100);
+
+                function increase() {
+                    a.value++;
+                }
+
+                function decrease(event) {
+                    if (event.key === 'Backspace' || event.key === 'Delete') {
+                        a.value--;
+                    }
+                }
+
+                
+                document.addEventListener('keydown', decrease);
+
+                return {
+                    name,
+                    age,
+                    list,
+                    color,
+                    a,
+                    increase,
+                    decrease
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
